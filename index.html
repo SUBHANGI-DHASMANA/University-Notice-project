@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Notice</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/e863d81bfc.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="nav">
+        <nav class="navbar">
+            <div class="logo">
+                <div id="logo"><img src="logo.png" alt="logo"></div>
+            </div>
+            <div class="heading">
+                <h1 style="color: #fff;">UNIVERSITY NOTICE 2022-23</h1>
+            </div>
+        </nav>
+    </div>
+    <div class="popup-box">
+        <div class="popup">
+            <div class="content">
+                <header>
+                    <p>Add Notice</p>
+                    <i class="fa-solid fa-xmark"></i>
+                </header>
+                <form>
+                    <div class="row title">
+                        <label>Title/Notices</label><br>
+                        <textarea id="name"></textarea>
+                    </div>
+                    <button id="add-btn" value="submit" onclick="manageData()">Add Notice</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="top">
+            <i class="fa-solid fa-newspaper fa-xl" style="margin: 0px 10px ;"></i>
+            <h2 style="letter-spacing: 0.1rem;">Noticeboard</h2>
+        </div>
+    </div>
+    <div id="msg"></div>
+    <center>
+        <div class="tab">
+            <table id="show" style="border-radius: 5px;">
+                <thead>
+                    <tr>
+                        <th style="width: 75%; background-color: #0077ff;">Notice</th>
+                        <th style="width: 200px; background-color: #0077ff;">Date and Time</th>
+                        <th style="background-color: #0077ff;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="root"></tbody>
+            </table>
+        </div>
+    </center>
+    <div class="add">
+        <button class="add-btn">
+            <i class="fa-solid fa-square-plus fa-xl" style="letter-spacing: 0.1rem;"></i>
+            Add Notice
+        </button>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
