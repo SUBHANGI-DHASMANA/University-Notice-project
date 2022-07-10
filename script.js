@@ -1,12 +1,23 @@
+let options = {
+	weekday: "long",
+	day: "numeric",
+	month: "long"
+};
+
+let option = {
+	hour : "numeric",
+	minute: "numeric",
+	second: "numeric"
+}
+
+let dtArray = []
+
 let currentDate = new Date(),
-	month = currentDate.getMonth(),
-	day = currentDate.getDate(),
-	year = currentDate.getFullYear(),
-	hour = currentDate.getHours(),
-	min = currentDate.getMinutes(),
-	sec = currentDate.getSeconds();
-let dateTime = `${day}/${month}/${year} <br>
-     ${hour}:${min}:${sec}`;
+	day = currentDate.toLocaleDateString("en-US", options),
+	time = currentDate.toLocaleTimeString("en-US", option);
+let b = `${day} ${time}`;
+dtArray.push(b);
+let dateTime = dtArray.toString();
 
 //popup-box
 const addEntry = document.querySelector(".add-btn"),
@@ -15,7 +26,7 @@ const addEntry = document.querySelector(".add-btn"),
 
 
 addEntry.addEventListener("click", () => {
-	popupBox.classList.add("show");
+		popupBox.classList.add("show");
 });
 
 closeIcon.addEventListener("click", () => {
@@ -53,8 +64,8 @@ function selectData() {
 		let dt = dateTime;
 		for (let k in arr) {
 			html = html + `<tr>
-			<td>${arr[k]}</td>
-			<td>${dt}</td>
+			<td id="msg">${arr[k]}</td>
+			<td><span id="a">${dt}</span></td>
 			<td><a href="" style="text-decoration: none;color: grey;" onclick="deleteData(${k})">Delete</a></td>
 			</tr>`;
 		}
@@ -70,10 +81,10 @@ function deleteData(rid) {
 }
 
 function getUserData() {
-	let arr = JSON.parse(localStorage.getItem('user'));
+	let arr = JSON.parse(sessionStorage.getItem('user'));
 	return arr;
 }
 
 function setUserData(arr) {
-	localStorage.setItem('user', JSON.stringify(arr));
+	sessionStorage.setItem('user', JSON.stringify(arr));
 }
