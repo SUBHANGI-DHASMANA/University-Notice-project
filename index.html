@@ -31,7 +31,9 @@
                 </header>
                 <form>
                     <div class="row title">
-                        <label>Title/Notices</label><br>
+                        <label>Date</label>
+                        <input type="date" name="" id="" style="margin: 10px 0;">
+                        <label>Title/Notices</label>
                         <textarea id="name"></textarea>
                     </div>
                     <button id="add-btn" value="submit" onclick="manageData()">Add Notice</button>
@@ -51,9 +53,9 @@
             <table id="show" style="border-radius: 5px;">
                 <thead>
                     <tr>
-                        <th style="width: 75%; background-color: #0077ff;">Notice</th>
-                        <th style="width: 200px; background-color: #0077ff;">Date and Time</th>
-                        <th style="background-color: #0077ff;">Action</th>
+                        <th style="width: 75%; background-color: #041d53; color: #fff;">Notice</th>
+                        <th style="width: 200px; background-color: #041d53; color: #fff;">Date and Time</th>
+                        <th style="background-color: #041d53; color: #fff;">Action</th>
                     </tr>
                 </thead>
                 <tbody id="root"></tbody>
