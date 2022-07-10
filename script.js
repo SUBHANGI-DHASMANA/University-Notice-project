@@ -22,7 +22,8 @@ let dateTime = dtArray.toString();
 //popup-box
 const addEntry = document.querySelector(".add-btn"),
 	popupBox = document.querySelector(".popup-box"),
-	closeIcon = popupBox.querySelector("header i");
+	link = document.querySelector("#link"),
+	closeIcon = popupBox.querySelector(".cross");
 
 
 addEntry.addEventListener("click", () => {
@@ -64,9 +65,11 @@ function selectData() {
 		let dt = dateTime;
 		for (let k in arr) {
 			html = html + `<tr>
-			<td id="msg">${arr[k]}</td>
+			<td id="msg"><a href="${link}">${arr[k]}</a></td>
 			<td><span id="a">${dt}</span></td>
-			<td><a href="" style="text-decoration: none;color: grey;" onclick="deleteData(${k})">Delete</a></td>
+			<td><a href="" style="text-decoration: none;color: grey;" onclick="deleteData(${k})">Delete</a><br>
+			<a href="" style="text-decoration: none;color: grey;" onclick="editData(${k})">Edit</a>
+			</td>
 			</tr>`;
 		}
 		document.getElementById('root').innerHTML = html;
@@ -78,6 +81,10 @@ function deleteData(rid) {
 	arr.splice(rid, 1);
 	setUserData(arr);
 	selectData();
+}
+
+function editData(rid) {
+	popupBox.classList.add("show");
 }
 
 function getUserData() {
