@@ -6,8 +6,7 @@ let options = {
 
 let option = {
 	hour : "numeric",
-	minute: "numeric",
-	second: "numeric"
+	minute: "numeric"
 }
 
 let dtArray = []
@@ -22,12 +21,14 @@ let dateTime = dtArray.toString();
 //popup-box
 const addEntry = document.querySelector(".add-btn"),
 	popupBox = document.querySelector(".popup-box"),
-	link = document.querySelector("#link"),
+	textBox = document.querySelector("#name"),
 	closeIcon = popupBox.querySelector(".cross");
+
+let isUpdate = false , k;
 
 
 addEntry.addEventListener("click", () => {
-		popupBox.classList.add("show");
+	popupBox.classList.add("show");
 });
 
 closeIcon.addEventListener("click", () => {
@@ -60,19 +61,24 @@ function manageData() {
 
 function selectData() {
 	let arr = getUserData();
+	if(!arr) return;
 	if (arr != null) {
 		let html = '';
 		let dt = dateTime;
 		for (let k in arr) {
 			html = html + `<tr>
-			<td id="msg"><a href="${link}">${arr[k]}</a></td>
+			<td id="msg">${arr[k]}</td>
 			<td><span id="a">${dt}</span></td>
 			<td><a href="" style="text-decoration: none;color: grey;" onclick="deleteData(${k})">Delete</a><br>
-			<a href="" style="text-decoration: none;color: grey;" onclick="editData(${k})">Edit</a>
+			<!-- <a href="" style="text-decoration: none;color: grey;" onclick="editData(${k},'${arr[k]}' )">Edit</a> -->
 			</td>
 			</tr>`;
 		}
-		document.getElementById('root').innerHTML = html;
+		if (!isUpdate) {
+			document.getElementById('root').innerHTML = html;	
+		}else{
+			dtArray[k] = html;
+		}
 	}
 }
 
@@ -83,8 +89,10 @@ function deleteData(rid) {
 	selectData();
 }
 
-function editData(rid) {
+function editData(rid,title) {
+	isUpdate = true;
 	popupBox.classList.add("show");
+	textBox.value = title;
 }
 
 function getUserData() {
